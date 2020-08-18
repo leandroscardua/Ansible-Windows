@@ -1,3 +1,5 @@
+pip install pywinrm
+
 folder=ansible
 
 cd ~/
