@@ -1,6 +1,3 @@
-apt install python-pip
-pip install pywinrm
-
 folder=ansible
 
 cd ~/
