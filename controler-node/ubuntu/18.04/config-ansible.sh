@@ -5,7 +5,7 @@ mkdir $folder
 cd $folder
 mkdir log
 mkdir roles
-mkdir playbooks/windows
+mkdir playbooks
 
 cp /etc/ansible/ansible.cfg ~/$folder/ansible.cfg
 
