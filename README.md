@@ -10,7 +10,7 @@ Utiliza o ansible para gerenciar maquinas windows
 
  Requerimentos:
 --------
-- Habilitar acesso SSH no Linux/FreeBSB
+- Habilitar acesso SSH no Linux/FreeBSD
 - Acceso a internet, para baixar os arquivos necessarios
 
  Arquivos:
