@@ -1,6 +1,7 @@
 Utiliza o ansible para gerenciar maquinas windows
 
 https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/windows-ansible.jpg
+![alt text](https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/windows-ansible.jpg)
 
  Programas:
 --------
