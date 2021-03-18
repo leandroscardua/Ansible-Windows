@@ -5,10 +5,9 @@
       win_feature:
         name:
         - Web-Server
-      state: present
+        state: present
+      register: win_feature
 
     - name: Reboot if installing Web-Server feature requires it
       win_reboot:
       when: win_feature.reboot_required
-
-
