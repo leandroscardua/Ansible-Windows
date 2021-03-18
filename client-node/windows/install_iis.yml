@@ -1,0 +1,14 @@
+- name: Install IIS Server on windows server
+  hosts: servername
+  tasks:
+    - name: Install IIS (Web-Server Role)
+      win_feature:
+        name:
+        - Web-Server
+      state: present
+
+    - name: Reboot if installing Web-Server feature requires it
+      win_reboot:
+      when: win_feature.reboot_required
+
+
