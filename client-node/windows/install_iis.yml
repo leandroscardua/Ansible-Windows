@@ -1,13 +1,15 @@
-- name: Install IIS Server on windows server
+- name: Install IIS Server on windows server with sub and management features
   hosts: servername
   tasks:
     - name: Install IIS (Web-Server Role)
       win_feature:
         name:
         - Web-Server
+        include_sub_features: yes
+        include_management_tools: yes
         state: present
-      register: win_feature
+      register: install_iis
 
     - name: Reboot if installing Web-Server feature requires it
       win_reboot:
-      when: win_feature.reboot_required
+      when: install_iis.reboot_required
