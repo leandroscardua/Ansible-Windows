@@ -1,0 +1,13 @@
+- name: Firewall rule to allow ICMP v4 (ping)
+  hosts: servername
+  tasks:
+    - name: Enable ping
+      win_firewall_rule:
+        name: ICMP Allow incoming V4 echo request
+        enabled: yes
+        state: present
+        profiles: private
+        action: allow
+        direction: in
+        protocol: icmpv4
+
