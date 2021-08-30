@@ -3,5 +3,5 @@
   tasks:
     - name: stopping a service
       win_service:
-        name: TemService
+        name: TermService
         state: stopped
