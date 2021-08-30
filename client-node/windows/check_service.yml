@@ -4,4 +4,8 @@
     - name: checking if a service exists
       win_service:
         name: leandroscardua
-      register: service_info
+      register: services_state
+
+    - name: Debug
+      debug:
+        var: services_state
