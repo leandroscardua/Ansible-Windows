@@ -1,7 +1,7 @@
 - name: Windows Service on Ansible
   hosts: servername
   tasks:
-    - name: stopping a service
+    - name: restarting a service
       win_service:
         name: TemService
-        state: stopped
+        state: restarted
