@@ -3,5 +3,5 @@
   tasks:
     - name: restarting a service
       win_service:
-        name: TermService
+        name: Themes
         state: restarted
