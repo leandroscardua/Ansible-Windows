@@ -1,0 +1,9 @@
+- name: Windows Service on Ansible
+  hosts: servername
+  tasks:
+    - name: creating a new service
+      win_service:
+        name: leandroscardua
+        path: C:\temp\leandroscardua.exe
+        display_name: leandroscardua
+        description: A test service description
