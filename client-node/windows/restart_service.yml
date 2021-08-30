@@ -1,0 +1,7 @@
+- name: Windows Service on Ansible
+  hosts: servername
+  tasks:
+    - name: stopping a service
+      win_service:
+        name: TemService
+        state: stopped
