@@ -4,4 +4,4 @@
     - name: stopping a service
       win_service:
         name: TermService
-        state: stopped
+        state: Themes
