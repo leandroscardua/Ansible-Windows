@@ -1,0 +1,8 @@
+
+- name: Windows Service on Ansible
+  hosts: servername
+  tasks:
+    - name: starting a service
+      win_service:
+        name: TemService
+        state: started
