@@ -1,0 +1,7 @@
+- name: Windows Service on Ansible
+  hosts: servername
+  tasks:
+    - name: checking if a service exists
+      win_service:
+        name: leandroscardua
+      register: service_info
