@@ -1,0 +1,7 @@
+- name: Windows Service on Ansible
+  hosts: servername
+  tasks:
+    - name: removing a service
+      win_service:
+        name: leandroscardua
+        state: absent
