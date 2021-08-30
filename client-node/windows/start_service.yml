@@ -4,5 +4,5 @@
   tasks:
     - name: starting a service
       win_service:
-        name: TemService
+        name: TermService
         state: started
