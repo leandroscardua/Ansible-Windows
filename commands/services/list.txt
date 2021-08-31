@@ -1,0 +1,41 @@
+#download playbooks
+
+wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/stop_service.yml -P playbooks/
+
+wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/start_service.yml -P playbooks/
+
+wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/restart_service.yml -P playbooks/
+
+wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/create_service.yml -P playbooks/
+
+wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/check_service.yml -P playbooks/
+
+wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/remove_service.yml -P playbooks/
+
+#Edit playbooks
+
+nano playbooks/stop_service.yml
+
+nano playbooks/start_service.yml
+
+nano playbooks/restart_service.yml
+
+nano playbooks/create_service.yml
+
+nano playbooks/check_service.yml
+
+nano playbooks/remove_service.yml
+
+#Run Playbook
+
+ansible-playbook -i inventory.ini playbooks/stop_service.yml
+
+ansible-playbook -i inventory.ini playbooks/start_service.yml
+
+ansible-playbook -i inventory.ini playbooks/restart_service.yml
+
+ansible-playbook -i inventory.ini playbooks/create_service.yml
+
+ansible-playbook -i inventory.ini playbooks/check_service.yml
+
+ansible-playbook -i inventory.ini playbooks/remove_service.yml
