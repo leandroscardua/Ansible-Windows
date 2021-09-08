@@ -3,5 +3,5 @@
   tasks:
     - name: creating a new folder
       win_file:
-        path: C:\leandroscardua
+        path: C:\leandroscardua.txt
         state: touch
