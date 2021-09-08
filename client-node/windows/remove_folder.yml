@@ -1,0 +1,8 @@
+
+- name: Windows file and folder on Ansible
+  hosts: servername
+  tasks:
+    - name: removing folder
+      win_file:
+        path: C:\leandroscardua
+        state: absent
