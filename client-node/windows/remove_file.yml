@@ -1,7 +1,7 @@
 - name: Windows file and folder on Ansible
   hosts: servername
   tasks:
-    - name: creating a new file
+    - name: removing file
       win_file:
         path: C:\leandroscardua.txt
         state: absent
