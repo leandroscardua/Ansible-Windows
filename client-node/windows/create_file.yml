@@ -1,7 +1,7 @@
 - name: Windows file and folder on Ansible
   hosts: servername
   tasks:
-    - name: creating a new folder
+    - name: creating a new file
       win_file:
         path: C:\leandroscardua.txt
         state: touch
