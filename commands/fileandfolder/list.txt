@@ -1,0 +1,33 @@
+#download playbooks
+
+wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/stop_service.yml -P playbooks/
+
+wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/start_service.yml -P playbooks/
+
+wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/create_file.yml -P playbooks/
+
+wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/create_folder.yml -P playbooks/
+
+wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/remove_file.yml -P playbooks/
+
+wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/remove_folder.yml -P playbooks/
+
+#Edit playbooks
+
+nano playbooks/create_file.yml
+
+nano playbooks/create_folder.yml
+
+nano playbooks/remove_file.yml
+
+nano playbooks/remove_folder.yml
+
+#Run Playbook
+
+ansible-playbook -i inventory.ini playbooks/create_file.yml
+
+ansible-playbook -i inventory.ini playbooks/create_folder.yml
+
+ansible-playbook -i inventory.ini playbooks/remove_file.yml
+
+ansible-playbook -i inventory.ini playbooks/remove_folder.yml
