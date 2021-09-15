@@ -1,9 +1,5 @@
 #download playbooks
 
-wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/stop_service.yml -P playbooks/
-
-wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/start_service.yml -P playbooks/
-
 wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/create_file.yml -P playbooks/
 
 wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/create_folder.yml -P playbooks/
