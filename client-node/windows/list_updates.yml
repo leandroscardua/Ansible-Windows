@@ -1,0 +1,12 @@
+- name: Search for Updates on Ansible
+  hosts: 
+  tasks:
+    - name: Searching for updates
+      win_updates:
+        state: searched
+      register: update_results
+
+    - name: Show the updates results
+      debug:
+        msg: |
+          {{ update_results }}
