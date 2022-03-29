@@ -1,0 +1,12 @@
+#download playbooks
+
+wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/list_updates.yml -P playbooks/
+
+#Edit playbooks
+
+nano playbooks/list_updates.yml
+
+#Run Playbook
+
+ansible-playbook -i inventory.ini playbooks/list_updates.yml
+
