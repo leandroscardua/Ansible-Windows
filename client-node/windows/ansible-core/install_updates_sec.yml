@@ -1,0 +1,13 @@
+- name: Install for Updates on Ansible
+  hosts:
+  tasks:
+    - name: Install Security Udates
+      win_updates:
+        state: installed
+        category_names: SecurityUpdates
+      register: update_results
+
+    - name: Show the updates results
+      debug:
+        msg: |
+          {{ update_results.updates }}
