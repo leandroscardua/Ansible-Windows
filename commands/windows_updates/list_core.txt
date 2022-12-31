@@ -16,6 +16,6 @@ nano playbooks/install_updates_sec.ym
 
 ansible-playbook -i inventory.ini playbooks/list_updates.yml
 
-ansible-playbook -i inventory.ini playbooks/install_updates_msrt.yml
+ansible-playbook -i inventory.ini playbooks/install_updates_msrt.yml -v
 
-ansible-playbook -i inventory.ini playbooks/install_updates_sec.ym
+ansible-playbook -i inventory.ini playbooks/install_updates_sec.ym -v
