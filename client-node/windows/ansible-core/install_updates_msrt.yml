@@ -4,7 +4,7 @@
     - name: Install MSRT Updates
       win_updates:
         state: installed
-        whitelist:
+        accept_list:
         - Windows Malicious Software Removal Tool
       register: update_results
 
