@@ -9,4 +9,4 @@
     - name: Show the updates results
       debug:
         msg: |
-          {{ update_results }}
+          {{ update_results.updates }}
