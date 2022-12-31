@@ -5,6 +5,7 @@
       win_updates:
         state: installed
         category_names: SecurityUpdates
+        reboot: yes
       register: update_results
 
     - name: Show the updates results
