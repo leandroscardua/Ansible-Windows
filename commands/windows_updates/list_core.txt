@@ -18,4 +18,4 @@ ansible-playbook -i inventory.ini playbooks/list_updates.yml
 
 ansible-playbook -i inventory.ini playbooks/install_updates_msrt.yml
 
-ansible-playbook -i inventory.ini playbooks/install_updates_sec.yml -vv
+ansible-playbook -i inventory.ini playbooks/install_updates_sec.yml -v
