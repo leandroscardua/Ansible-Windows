@@ -2,7 +2,7 @@
   hosts: 
   tasks:
     - name: Searching for updates
-      win_updates:
+      ansible.windows.win_updates:
         state: searched
       register: update_results
 
