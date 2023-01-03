@@ -2,7 +2,7 @@
   hosts:
   tasks:
     - name: Install Security Udates
-      win_updates:
+      ansible.windows.win_updates:
         state: installed
         category_names: SecurityUpdates
         reboot: yes
