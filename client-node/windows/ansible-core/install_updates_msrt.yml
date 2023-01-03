@@ -2,7 +2,7 @@
   hosts:
   tasks:
     - name: Install MSRT Updates
-      win_updates:
+      ansible.windows.win_updates:
         state: installed
         accept_list:
         - Windows Malicious Software Removal Tool
