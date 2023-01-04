@@ -1,5 +1,5 @@
 - name: Search for Updates on Ansible
-  hosts: 
+  hosts:
   tasks:
     - name: Install IIS Web-Server with sub features and management tools
       ansible.windows.win_feature:
@@ -12,5 +12,4 @@
     - name: Show the feature results
       debug:
         msg: |
-          {{ feature_results }
-          
+          {{ feature_results }}
