@@ -7,9 +7,7 @@
         state: present
         include_sub_features: yes
         include_management_tools: yes
-      register: feature_results
-
-    - name: Show the feature results
-      debug:
-        msg: |
-          {{ feature_results }}
+        
+    - name: Reboot if installing Web-Server feature requires it
+      ansible.windows.win_reboot:
+      when: win_feature.reboot_required
