@@ -9,6 +9,6 @@
         include_management_tools: yes
       register: reboot
       
-    - name: Reboot if installing Web-Server feature requires it
+    - name: check if a reboot is required
       ansible.windows.win_reboot:
       when: reboot.reboot_required
