@@ -9,8 +9,8 @@ wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/cli
 #Edit playbooks
 
 nano playbooks/list_updates.yml
-nano playbooks/install_updates_msrt.ym
-nano playbooks/install_updates_sec.ym
+nano playbooks/install_updates_msrt.yml
+nano playbooks/install_updates_sec.yml
 
 #Run Playbook
 
@@ -18,4 +18,4 @@ ansible-playbook -i inventory.ini playbooks/list_updates.yml
 
 ansible-playbook -i inventory.ini playbooks/install_updates_msrt.yml
 
-ansible-playbook -i inventory.ini playbooks/install_updates_sec.ym
+ansible-playbook -i inventory.ini playbooks/install_updates_sec.yml -v
