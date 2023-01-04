@@ -12,5 +12,5 @@
     - name: Show the feature results
       debug:
         msg: |
-          {{ feature_results.updates }
+          {{ feature_results }
           
