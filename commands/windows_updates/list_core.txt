@@ -10,7 +10,7 @@ wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/cli
 
 nano playbooks/list_updates.yml
 nano playbooks/install_updates_msrt.ym
-nano playbooks/install_updates_sec.ym
+nano playbooks/install_updates_sec.yml
 
 #Run Playbook
 
