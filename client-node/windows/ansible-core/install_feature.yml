@@ -13,3 +13,4 @@
       debug:
         msg: |
           {{ feature_results.updates }
+          
