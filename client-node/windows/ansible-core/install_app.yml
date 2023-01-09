@@ -1,8 +1,8 @@
-- name: Search for Updates on Ansible
+- name: Install an Application
   hosts: 
   tasks:
-    - name: 
+    - name: Install RemoteDesktopManager
       ansible.windows.win_package:
-        path: https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.4.8/npp.8.4.8.Installer.exe
+        path: https://cdn.devolutions.net/download/Setup.RemoteDesktopManager.2022.3.29.0.msi
+        arguments: /quiet /norestart
         state: present
-        arguments: /S
