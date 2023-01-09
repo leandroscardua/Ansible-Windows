@@ -1,12 +1,15 @@
 #download playbooks
 
 wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/ansible-core/install_app.yml -P playbooks/
+wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/ansible-core/remove_app.yml -P playbooks/
 
 
 #Edit playbooks
 
 nano playbooks/install_app.yml
+nano playbooks/remove_app.yml
 
 #Run Playbook
 
 ansible-playbook -i inventory.ini playbooks/install_app.yml
+ansible-playbook -i inventory.ini playbooks/remove_app.yml
