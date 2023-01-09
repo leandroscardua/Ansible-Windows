@@ -1,7 +1,7 @@
 - name: Install an Application
   hosts: 
   tasks:
-    - name: Install RemoteDesktopManager
+    - name: Install Remote Desktop Manager
       ansible.windows.win_package:
         path: https://cdn.devolutions.net/download/Setup.RemoteDesktopManager.2022.3.29.0.msi
         arguments: /quiet /norestart
