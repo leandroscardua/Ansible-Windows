@@ -2,10 +2,16 @@
 
 wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/ansible-core/download_file.yml -P playbooks/
 
+wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/ansible-core/download_multiple_files.yml -P playbooks/
+
 #Edit playbooks
 
 nano playbooks/download_file.yml
 
+nano playbooks/download_multiple_files.yml
+
 #Run Playbook
 
 ansible-playbook -i inventory.ini playbooks/download_file.yml
+
+ansible-playbook -i inventory.ini playbooks/download_multiple_files.yml 
