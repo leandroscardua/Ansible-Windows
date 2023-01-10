@@ -1,0 +1,10 @@
+- name: Download multiples files
+  hosts: ws2022
+  tasks:
+    - name: Download a JPG image and README.MD file
+      ansible.windows.win_get_url:
+        url: "{{ item }}"
+        dest: C:\Users\Administrator\Desktop\
+      loop:
+        - https://github.com/leandroscardua/Ansible-Windows/raw/master/windows-ansible.jpg
+        - https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/README.md
