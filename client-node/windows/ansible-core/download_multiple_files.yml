@@ -1,5 +1,5 @@
 - name: Download multiples files
-  hosts: ws2022
+  hosts:
   tasks:
     - name: Download a JPG image and README.MD file
       ansible.windows.win_get_url:
