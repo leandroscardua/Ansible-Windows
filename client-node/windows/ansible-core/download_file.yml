@@ -1,0 +1,7 @@
+- name: Download an file
+  hosts: 
+  tasks:
+    - name: Download a JPG image
+      ansible.windows.win_get_url:
+        url: https://github.com/leandroscardua/Ansible-Windows/raw/master/windows-ansible.jpg
+        dest: C:\Users\Administrator\Desktop\windows-ansible.jpg
