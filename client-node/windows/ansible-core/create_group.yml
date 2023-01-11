@@ -1,0 +1,8 @@
+- name: Create a Local Windows Group
+  hosts:
+  tasks:
+    - name: Create a Local Windows Group with name 
+      ansible.windows.win_group:
+        name: test
+        description: test Group
+        state: present
