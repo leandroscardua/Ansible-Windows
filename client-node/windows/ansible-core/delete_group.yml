@@ -1,0 +1,7 @@
+- name: Create a Local Windows Group
+  hosts:
+  tasks:
+    - name: Remove a Local Windows Group with name test
+      ansible.windows.win_group:
+        name: test
+        state: absent
