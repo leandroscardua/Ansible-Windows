@@ -1,0 +1,26 @@
+#download playbooks
+
+wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/ansible-core/create_group.yml -P playbooks/
+
+wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/ansible-core/delete_group.yml -P playbooks/
+
+wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/ansible-core/create_user.yml -P playbooks/
+
+wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/ansible-core/delete_user.yml -P playbooks/
+
+#Edit playbooks
+
+nano playbooks/create_group.yml
+nano playbooks/delete_group.yml
+nano playbooks/create_user.yml
+nano playbooks/delete_user.yml
+
+#Run Playbook
+
+ansible-playbook -i inventory.ini playbooks/create_group.yml
+
+ansible-playbook -i inventory.ini playbooks/delete_group.yml
+
+ansible-playbook -i inventory.ini playbooks/create_user.yml
+
+ansible-playbook -i inventory.ini playbooks/delete_user.yml
