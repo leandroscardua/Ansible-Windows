@@ -1,0 +1,10 @@
+- name: Create a Local Windows User
+  hosts:
+  tasks:
+    - name: Create a Local Windows user with name test
+      ansible.windows.win_user:
+        name: test_user
+        password: P@ssw0rdE
+        state: present
+        groups:
+        - Users
