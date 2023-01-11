@@ -1,0 +1,7 @@
+- name: Remove a Local Windows User
+  hosts:
+  tasks:
+    - name: Remove a Local Windows user with name test
+      ansible.windows.win_user:
+        name: test_user
+        state: absent
