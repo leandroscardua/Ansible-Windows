@@ -1,0 +1,10 @@
+- name: Run a command
+  hosts:
+  tasks:
+    - name: Run systeminfo command
+      ansible.windows.win_command: systeminfo
+      register: cmd_out
+
+    - name: Show results of the command
+      ansible.builtin.debug:
+        var: cmd_out
