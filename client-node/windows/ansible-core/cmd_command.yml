@@ -1,4 +1,4 @@
-- name: Run a command
+- name: Run a cmd command
   hosts:
   tasks:
     - name: Run systeminfo command
