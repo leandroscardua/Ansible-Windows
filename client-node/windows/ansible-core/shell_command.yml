@@ -1,0 +1,10 @@
+- name: Run a powershell command
+  hosts: 
+  tasks:
+    - name: Run Get-WindowsFeature command
+      ansible.windows.win_shell: Get-WindowsFeature
+      register: shell_out
+
+    - name: Show results of the command
+      ansible.builtin.debug:
+        var: shell_out
