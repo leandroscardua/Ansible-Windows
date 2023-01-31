@@ -1,0 +1,17 @@
+#download playbooks
+
+wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/ansible-core/cmd_command.yml -P playbooks/
+
+wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/ansible-core/shell_command.yml -P playbooks/
+
+#Edit playbooks
+
+nano playbooks/cmd_command.yml 
+
+nano playbooks/shell_command.yml
+
+#Run Playbook
+
+ansible-playbook -i inventory.ini playbooks/cmd_command.yml 
+
+ansible-playbook -i inventory.ini playbooks/shell_command.yml
