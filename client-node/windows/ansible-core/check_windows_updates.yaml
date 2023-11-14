@@ -1,0 +1,29 @@
+- name: Check windows updates
+  hosts: windows
+  tasks:
+
+  - name: 'Set service startup mode to manual and ensure it is started'
+    ansible.windows.win_service:
+      name: wuauserv
+      start_mode: manual
+      state: started
+
+  - name: "Search-only, return list of found updates"
+    ansible.windows.win_updates:
+      state: searched
+      server_selection: windows_update
+    register: windows_update_count
+
+  - name: Set service startup mode to disabled and ensure it is stopped
+    ansible.windows.win_service:
+      name: wuauserv
+      start_mode: disabled
+      state: stopped
+
+  - name: Show the output with the results
+    ansible.builtin.debug:
+      msg:
+        - "Server Name: {{ ansible_hostname }}"
+        - "OS version: {{ ansible_distribution }}"
+        - "Pending Updates: {{ windows_update_count.found_update_count }}"
+        - "Rebooot required: {{ windows_update_count.reboot_required }}"
