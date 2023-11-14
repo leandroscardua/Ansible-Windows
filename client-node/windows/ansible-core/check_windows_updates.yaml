@@ -1,5 +1,5 @@
 - name: Check windows updates
-  hosts: windows
+  hosts: 
   tasks:
 
   - name: 'Set service startup mode to manual and ensure it is started'
