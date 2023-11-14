@@ -1,0 +1,50 @@
+- name: Install Comulative Updates
+  hosts: 
+  tasks:
+
+  - name: Set service startup mode to manual and ensure it is started
+    ansible.windows.win_service:
+      name: wuauserv
+      start_mode: manual
+      state: started
+
+  - name: Ensure WinRM starts when the system has settled and is ready to work reliably
+    ansible.windows.win_service:
+      name: WinRM
+      start_mode: delayed
+
+  - name: Install Servicing Stack Updates
+    ansible.windows.win_updates:
+      accept_list:
+        - \d{4}-\d{2} Servicing Stack Update for Windows Server
+      server_selection: windows_update
+    register: windows_update_count
+
+  - name: Install Cumulative Updates
+    ansible.windows.win_updates:
+      accept_list:
+        - \d{4}-\d{2} Cumulative Update for Windows Server
+      server_selection: windows_update
+      reboot: true
+      reboot_timeout: 3600
+    register: windows_update_count
+
+  - name: Set service startup mode to disabled and ensure it is stopped
+    ansible.windows.win_service:
+      name: wuauserv
+      start_mode: disabled
+      state: stopped
+
+  - name: Ensure that WinRM is auto start mode when the system has settled
+    ansible.windows.win_service:
+      name: WinRM
+      start_mode: auto
+
+  - name: Show the output with the results
+    ansible.builtin.debug:
+      msg:
+        - "Server Name: {{ ansible_hostname }}"
+        - "OS version: {{ ansible_distribution }}"
+        - "Pending Updates: {{ windows_update_count.found_update_count }}"
+        - "Reboot required: {{ windows_update_count.reboot_required }}"
+        - "Installed Updates: {{ windows_update_count.installed_update_count }}"
