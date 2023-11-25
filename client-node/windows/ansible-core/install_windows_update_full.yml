@@ -1,4 +1,4 @@
-- name: Install WWindows Updates
+- name: Install Windows Updates
   hosts: 
   tasks: 
 
