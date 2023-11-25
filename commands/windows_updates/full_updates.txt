@@ -8,4 +8,4 @@ nano playbooks/install_windows_update_full.yml
 
 #Run Playbook
 
-ansible-playbook -i inventory.ini playbooks/list_updates.yml
+ansible-playbook -i inventory.ini playbooks/install_windows_update_full.yml -k
