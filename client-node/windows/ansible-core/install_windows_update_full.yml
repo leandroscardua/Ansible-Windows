@@ -1,12 +1,26 @@
 - name: Install WWindows Updates
   hosts: 
-  tasks:
+  tasks: 
 
-    - name: Set service startup mode to manual and ensure it is started
+    - name: Set service startup mode to manual and ensure it is started (wuauserv)
       ansible.windows.win_service:
         name: wuauserv
         start_mode: manual
         state: started
+
+    - name: Disable Automatic Windows Update via register_1
+      ansible.windows.win_regedit:
+        path: HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate\AU
+        name: NoAutoUpdate
+        data: "1"
+        type: dword
+
+    - name: Disable Automatic Windows Update via register_2
+      ansible.windows.win_regedit:
+        path: HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate\AU
+        name: AUOptions
+        data: "1"
+        type: dword
 
     - name: Ensure WinRM starts when the system has settled and is ready to work reliably
       ansible.windows.win_service:
@@ -18,34 +32,30 @@
         accept_list:
           - \d{4}-\d{2} Servicing Stack Update for Windows Server
         server_selection: windows_update
-      register: windows_update_count
+        state: installed
+      register: windows_update_count_ssu
+
+    - name: Install all security, critical and rollup updates
+      ansible.windows.win_updates:
+        category_names:
+          - SecurityUpdates
+          - CriticalUpdates
+        server_selection: windows_update
+        reboot: true
+        reboot_timeout: 3600
+        state: installed
+      register: windows_update_count_all
 
     - name: Install Defender Updates
       ansible.windows.win_updates:
         category_names:
           - Definition Updates
-        server_selection: windows_update
-      register: windows_update_count
-
-    - name: Install Cumulative Updates
-      ansible.windows.win_updates:
-        accept_list:
-          - \d{4}-\d{2} Cumulative Update for Windows Server
+          - Microsoft Defender Antivirus
         server_selection: windows_update
         reboot: true
         reboot_timeout: 3600
-      register: windows_update_count
-
-    - name: Install all security, critical, non-critical, definitions and rollup updates
-      ansible.windows.win_updates:
-        category_names:
-          - SecurityUpdates
-          - CriticalUpdates
-          - UpdateRollups
-        server_selection: windows_update
-        reboot: true
-        reboot_timeout: 3600
-      register: windows_update_count
+        state: installed
+      register: windows_update_count_du
 
     - name: Write log on events for audit purpose
       community.windows.win_eventlog_entry:
@@ -53,25 +63,49 @@
         source: Ansible
         entry_type: Information
         event_id: 0
-        message: "{{ windows_update_count.installed_update_count }} updates was installed by Ansible"
-      when: windows_update_count.installed_update_count > 0
+        message: "{{ windows_update_count_du.installed_update_count }} Defender updates was installed by Ansible"
+      when: windows_update_count_du.installed_update_count > 0
 
-    - name: Set service startup mode to disabled and ensure it is stopped
+    - name: Write log on events for audit purpose
+      community.windows.win_eventlog_entry:
+        log: Application
+        source: Ansible
+        entry_type: Information
+        event_id: 0
+        message: "{{ windows_update_count_all.installed_update_count }} Windows updates SSU was installed by Ansible"
+      when: windows_update_count_ssu.installed_update_count > 0
+
+    - name: Write log on events for audit purpose
+      community.windows.win_eventlog_entry:
+        log: Application
+        source: Ansible
+        entry_type: Information
+        event_id: 0
+        message: "{{ windows_update_count_all.installed_update_count }} Windows updates was installed by Ansible"
+      when: windows_update_count_all.installed_update_count > 0
+
+    - name: Set service startup mode to disabled and ensure it is stopped (wuauserv)
       ansible.windows.win_service:
         name: wuauserv
-        start_mode: disabled
+        start_mode: manual
         state: stopped
+        force_dependent_services: true
 
     - name: Ensure that WinRM is auto start mode when the system has settled
       ansible.windows.win_service:
         name: WinRM
         start_mode: auto
+        state: started
 
     - name: Show the output with the results
       ansible.builtin.debug:
         msg:
           - "Server Name: {{ ansible_hostname }}"
           - "OS version: {{ ansible_distribution }}"
-          - "Pending Updates: {{ windows_update_count.found_update_count }}"
-          - "Reboot required: {{ windows_update_count.reboot_required }}"
-          - "Installed Updates: {{ windows_update_count.installed_update_count }}"
+          - "Pending Windows Updates: {{ windows_update_count_all.found_update_count }}"
+          - "Pending Updates Defender Updates: {{ windows_update_count_du.found_update_count }}"
+          - "Pending Updates Servicing Stack Updates: {{ windows_update_count_ssu.found_update_count }}"
+          - "Reboot required for Windows Updates: {{ windows_update_count_all.reboot_required }}"
+          - "Installed Updates Defender Updates: {{ windows_update_count_du.installed_update_count }}"
+          - "Installed Windows Updates: {{ windows_update_count_all.installed_update_count }}"
+          - "Installed Servicing Stack Updates: {{ windows_update_count_ssu.installed_update_count }}"
