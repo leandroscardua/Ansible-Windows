@@ -1,4 +1,4 @@
-- name: Install Windows Updates
+- name: Install WWindows Updates
   hosts: 
   tasks: 
 
@@ -8,14 +8,14 @@
         start_mode: manual
         state: started
 
-    - name: Disable Automatic Windows Update via register_1
+    - name: Disable Automatic Windows Update via register
       ansible.windows.win_regedit:
         path: HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate\AU
         name: NoAutoUpdate
         data: "1"
         type: dword
 
-    - name: Disable Automatic Windows Update via register_2
+    - name: Disable Automatic Windows Update via register
       ansible.windows.win_regedit:
         path: HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate\AU
         name: AUOptions
@@ -32,30 +32,32 @@
         accept_list:
           - \d{4}-\d{2} Servicing Stack Update for Windows Server
         server_selection: windows_update
+        reboot: true
+        reboot_timeout: 3600
         state: installed
       register: windows_update_count_ssu
 
-    - name: Install all security, critical and rollup updates
+    - name: Install all security, critical, definition and defender Updates
       ansible.windows.win_updates:
         category_names:
           - SecurityUpdates
           - CriticalUpdates
-        server_selection: windows_update
-        reboot: true
-        reboot_timeout: 3600
-        state: installed
-      register: windows_update_count_all
-
-    - name: Install Defender Updates
-      ansible.windows.win_updates:
-        category_names:
           - Definition Updates
           - Microsoft Defender Antivirus
         server_selection: windows_update
         reboot: true
         reboot_timeout: 3600
         state: installed
-      register: windows_update_count_du
+      register: windows_update_count_all
+
+    - name: Install Definition Updates and Security Updates
+      ansible.windows.win_updates:
+        category_names:
+          - Definition Updates
+          - Microsoft Defender Antivirus
+        server_selection: windows_update
+        state: installed
+      register: windows_update_count_dus
 
     - name: Write log on events for audit purpose
       community.windows.win_eventlog_entry:
@@ -63,8 +65,8 @@
         source: Ansible
         entry_type: Information
         event_id: 0
-        message: "{{ windows_update_count_du.installed_update_count }} Defender updates was installed by Ansible"
-      when: windows_update_count_du.installed_update_count > 0
+        message: "{{ windows_update_count_dus.installed_update_count }} Defender and Definition Updates was installed by Ansible"
+      when: windows_update_count_dus.installed_update_count > 0
 
     - name: Write log on events for audit purpose
       community.windows.win_eventlog_entry:
@@ -81,7 +83,7 @@
         source: Ansible
         entry_type: Information
         event_id: 0
-        message: "{{ windows_update_count_all.installed_update_count }} Windows updates was installed by Ansible"
+        message: "{{ windows_update_count_all.installed_update_count }} Windows, Defender and Security Updates was installed by Ansible"
       when: windows_update_count_all.installed_update_count > 0
 
     - name: Set service startup mode to disabled and ensure it is stopped (wuauserv)
@@ -103,9 +105,9 @@
           - "Server Name: {{ ansible_hostname }}"
           - "OS version: {{ ansible_distribution }}"
           - "Pending Windows Updates: {{ windows_update_count_all.found_update_count }}"
-          - "Pending Updates Defender Updates: {{ windows_update_count_du.found_update_count }}"
-          - "Pending Updates Servicing Stack Updates: {{ windows_update_count_ssu.found_update_count }}"
+          - "Pending Defender Updates: {{ windows_update_count_dus.found_update_count }}"
+          - "Pending Servicing Stack Updates: {{ windows_update_count_ssu.found_update_count }}"
           - "Reboot required for Windows Updates: {{ windows_update_count_all.reboot_required }}"
-          - "Installed Updates Defender Updates: {{ windows_update_count_du.installed_update_count }}"
+          - "Installed Defender Updates: {{ windows_update_count_dus.installed_update_count }}"
           - "Installed Windows Updates: {{ windows_update_count_all.installed_update_count }}"
           - "Installed Servicing Stack Updates: {{ windows_update_count_ssu.installed_update_count }}"
