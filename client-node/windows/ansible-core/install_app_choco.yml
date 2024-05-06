@@ -16,7 +16,7 @@
     - name: Install multiple packages
       win_chocolatey:
         name:
-        - vlc
+        - slack
         - zoom
-        - windirstat
+        - filezilla
         state: present
