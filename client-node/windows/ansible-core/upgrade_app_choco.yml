@@ -1,0 +1,16 @@
+- name: Upgrade an Application with chocolatey
+  hosts: 
+  tasks:
+
+    - name: Upgrade Google Chrome
+      win_chocolatey:
+        name: googlechrome
+        state: latest
+
+    - name: Upgrade multiple packages
+      win_chocolatey:
+        name:
+        - slack
+        - zoom
+        - filezilla
+        state: latest
