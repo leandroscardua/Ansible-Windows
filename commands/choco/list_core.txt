@@ -1,15 +1,18 @@
 #download playbooks
 
 wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/ansible-core/install_app_choco.yml -P playbooks/
+wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/ansible-core/upgrade_app_choco.yml -P playbooks/
 wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/ansible-core/remove_app_choco.yml -P playbooks/
 
 
 #Edit playbooks
 
 nano playbooks/install_app_choco.yml
+nano playbooks/upgrade_app_choco.yml
 nano playbooks/remove_app_choco.yml
 
 #Run Playbook
 
 ansible-playbook -i inventory.ini playbooks/install_app_choco.yml
+ansible-playbook -i inventory.ini playbooks/upgrade_app_choco.yml
 ansible-playbook -i inventory.ini playbooks/remove_app_choco.yml
