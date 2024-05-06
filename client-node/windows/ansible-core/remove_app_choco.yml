@@ -7,7 +7,7 @@
         name: googlechrome
         state: absent
 
-    - name: Install multiple packages
+    - name: Uninstall multiple packages
       win_chocolatey:
         name:
         - vlc
