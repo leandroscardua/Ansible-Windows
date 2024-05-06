@@ -1,0 +1,15 @@
+- name: Install an Application with chocolatey
+  hosts: 
+  tasks:
+    - name: Install Google Chrome
+      win_chocolatey:
+        name: googlechrome
+        state: present
+
+    - name: Install multiple packages
+      win_chocolatey:
+        name:
+        - procexp
+        - putty
+        - windirstat
+        state: present
