@@ -1,4 +1,4 @@
-- name: Install an Application with chocolatey
+- name: Uninstall an Application with chocolatey
   hosts: 
   tasks:
 
@@ -7,10 +7,10 @@
         name: googlechrome
         state: absent
 
-    - name: Uninstall multiple packages
+    - name: UNinstall multiple packages
       win_chocolatey:
         name:
-        - vlc
+        - slack
         - zoom
-        - windirstat
+        - filezilla
         state: absent
