@@ -1,15 +1,22 @@
 - name: Install an Application with chocolatey
   hosts: 
   tasks:
+
+    - name: Ensure Chocolatey itself is installed, using community repo for the bootstrap
+      win_chocolatey:
+        name: chocolatey
+        state: latest
+
     - name: Install Google Chrome
       win_chocolatey:
         name: googlechrome
         state: present
+        version: '124.0.6367.119'
 
     - name: Install multiple packages
       win_chocolatey:
         name:
-        - procexp
-        - putty
+        - vlc
+        - zoom
         - windirstat
         state: present
