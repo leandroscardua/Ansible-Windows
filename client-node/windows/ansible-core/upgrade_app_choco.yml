@@ -2,9 +2,9 @@
   hosts: 
   tasks:
 
-    - name: Upgrade Google Chrome
+    - name: Upgrade Wireshark
       win_chocolatey:
-        name: googlechrome
+        name: wireshark
         state: latest
 
     - name: Upgrade multiple packages
