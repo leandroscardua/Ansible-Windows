@@ -7,11 +7,11 @@
         name: chocolatey
         state: latest
 
-    - name: Install Google Chrome
+    - name: Install Wireshark
       win_chocolatey:
-        name: googlechrome
+        name: wireshark
         state: present
-        version: '124.0.6367.119'
+        version: '4.2.3'
 
     - name: Install multiple packages
       win_chocolatey:
