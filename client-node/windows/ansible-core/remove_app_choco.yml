@@ -2,9 +2,9 @@
   hosts: 
   tasks:
 
-    - name: Uninstall Google Chrome
+    - name: Uninstall Wireshark
       win_chocolatey:
-        name: googlechrome
+        name: wireshark
         state: absent
 
     - name: UNinstall multiple packages
