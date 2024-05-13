@@ -13,6 +13,6 @@ nano playbooks/remove_app_choco.yml
 
 #Run Playbook
 
-ansible-playbook -i inventory.ini playbooks/install_app_choco.yml
-ansible-playbook -i inventory.ini playbooks/upgrade_app_choco.yml
-ansible-playbook -i inventory.ini playbooks/remove_app_choco.yml
+ansible-playbook -i inventory.yml playbooks/install_app_choco.yml
+ansible-playbook -i inventory.yml playbooks/upgrade_app_choco.yml
+ansible-playbook -i inventory.yml playbooks/remove_app_choco.yml
