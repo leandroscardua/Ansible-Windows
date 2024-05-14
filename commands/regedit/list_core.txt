@@ -1,1 +1,15 @@
+#download playbooks
 
+wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/ansible-core/add_update_reg.yml -P playbooks/
+wget https://raw.githubusercontent.com/leandroscardua/Ansible-Windows/master/client-node/windows/ansible-core/remove_reg.yml -P playbooks/
+
+
+#Edit playbooks
+
+nano playbooks/add_update_reg.yml
+nano playbooks/remove_reg.yml
+
+#Run Playbook
+
+ansible-playbook -i inventory.ini playbooks/add_update_reg.yml
+ansible-playbook -i inventory.ini playbooks/remove_reg.yml
