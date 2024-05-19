@@ -1,0 +1,10 @@
+- name: Remove registry path
+  hosts: 
+  tasks:
+
+    - name: Remove registry path
+      ansible.windows.win_regedit:
+        path: HKCU:\Software\MyCompany
+        name: hello
+        data: world
+        state: absent
