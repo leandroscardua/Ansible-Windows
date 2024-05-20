@@ -11,5 +11,5 @@ nano playbooks/remove_reg.yml
 
 #Run Playbook
 
-ansible-playbook -i inventory.ini playbooks/add_update_reg.yml
-ansible-playbook -i inventory.ini playbooks/remove_reg.yml
+ansible-playbook -i inventory.yml playbooks/add_update_reg.yml
+ansible-playbook -i inventory.yml playbooks/remove_reg.yml
