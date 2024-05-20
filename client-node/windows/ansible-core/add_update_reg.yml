@@ -4,9 +4,9 @@
 
     - name: Add registry path
       ansible.windows.win_regedit:
-        path: HKCU:\Software\MyCompany
-        name: hello
-        data: world
+        path: HKCU:\Software\LeandroScardua
+        name: test
+        data: leandroscardua
 
     - name: Change default mouse trailing settings for new users
       ansible.windows.win_regedit:
