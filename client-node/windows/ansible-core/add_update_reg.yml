@@ -8,11 +8,9 @@
         name: test
         data: leandroscardua
 
-    - name: Change default mouse trailing settings for new users
+    - name: Change windows updates
       ansible.windows.win_regedit:
-        path: HKLM:\ANSIBLE\Control Panel\Mouse
-        name: MouseTrails
-        data: 10
-        type: string
+        path: HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate
+        name: AU
+        data: 1
         state: present
-        hive: C:\Users\Default\NTUSER.dat
